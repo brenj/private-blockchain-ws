@@ -19,7 +19,7 @@ app.get('/block/:height(\\d+)', convertHeightToInt, (req, res, next) => {
   blockchain.getBlockHeight()
     .then((lastBlockHeight) => {
       if (lastBlockHeight === EMPTY_HEIGHT) {
-        next('ERROR: Blockchain is empty; add a block and try again.');
+        next('ERROR: Blockchain is empty');
       } else if (requestedHeight < 0 || requestedHeight > lastBlockHeight) {
         next(`ERROR: Invalid block (${requestedHeight}) requested`);
       } else {
@@ -29,8 +29,23 @@ app.get('/block/:height(\\d+)', convertHeightToInt, (req, res, next) => {
     })
     .catch((error) => {
       console.error(`ERROR: ${error}`);
-      res.send(UNKNOWN_ERROR_MSG);
+      next(`ERROR: ${UNKNOWN_ERROR_MSG}`);
     });
+});
+
+app.post('/block', (req, res, next) => {
+  const { body } = req.query;
+
+  if (body === undefined) {
+    next('ERROR: No block data provided');
+  } else {
+    blockchain.addBlock(body)
+      .then(block => res.send(block))
+      .catch((error) => {
+        console.error(`ERROR: ${error}`);
+        next(`ERROR: ${UNKNOWN_ERROR_MSG}`);
+      });
+  }
 });
 
 app.listen(PORT, () => console.log(`App listening on port ${PORT}`));
