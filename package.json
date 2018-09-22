@@ -22,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/brenj/private-blockchain-ws/issues"
   },
-  "homepage": "https://github.com/brenj/private-blockchain-ws#readme"
+  "homepage": "https://github.com/brenj/private-blockchain-ws#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "npm": "^6.4.1"
+  }
 }
