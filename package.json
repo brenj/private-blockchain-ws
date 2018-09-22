@@ -1,0 +1,26 @@
+{
+  "name": "private-blockchain-ws",
+  "version": "1.0.0",
+  "description": "Web service used to expose a private blockchain.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brenj/private-blockchain-ws.git"
+  },
+  "keywords": [
+    "javascript",
+    "node",
+    "express",
+    "blockchain",
+    "udacity"
+  ],
+  "author": "brenj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brenj/private-blockchain-ws/issues"
+  },
+  "homepage": "https://github.com/brenj/private-blockchain-ws#readme"
+}
