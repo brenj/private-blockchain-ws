@@ -1,4 +1,5 @@
 const express = require('express');
+const Blockchain = require('private-blockchain');
 
 const app = express();
 const port = 8000;
