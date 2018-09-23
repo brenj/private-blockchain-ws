@@ -25,12 +25,12 @@ app.get('/block/:height(\\d+)', convertHeightToInt, (req, res, next) => {
     .then((lastBlockHeight) => {
       if (lastBlockHeight === EMPTY_HEIGHT) {
         const emptyBlockchainMessage = 'Blockchain is empty';
-        res.status(500).json(getErrorResponse(emptyBlockchainMessage));
+        res.status(404).json(getErrorResponse(emptyBlockchainMessage));
         next(`ERROR: ${emptyBlockchainMessage}`);
       } else if (requestedHeight < 0 || requestedHeight > lastBlockHeight) {
         const invalidBlockMessage = (
           `Invalid block (${requestedHeight}) requested`);
-        res.status(500).json(getErrorResponse(invalidBlockMessage));
+        res.status(400).json(getErrorResponse(invalidBlockMessage));
         next(`ERROR: ${invalidBlockMessage}`);
       } else {
         return blockchain.getBlock(requestedHeight)
@@ -38,7 +38,7 @@ app.get('/block/:height(\\d+)', convertHeightToInt, (req, res, next) => {
       }
     })
     .catch((error) => {
-      res.json(getErrorResponse(UNKNOWN_ERROR_MSG));
+      res.status(500).json(getErrorResponse(UNKNOWN_ERROR_MSG));
       next(`ERROR: ${error}`);
     });
 });
@@ -48,7 +48,7 @@ app.post('/block', (req, res, next) => {
 
   if (body === undefined) {
     const noBlockDataMessage = 'No block data provided';
-    res.status(500).json(getErrorResponse(noBlockDataMessage));
+    res.status(400).json(getErrorResponse(noBlockDataMessage));
     next(`ERROR: ${noBlockDataMessage}`);
   } else {
     blockchain.addBlock(body)
