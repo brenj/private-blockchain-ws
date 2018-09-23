@@ -68,9 +68,10 @@ Requirements
 * Node
 * Node Package Manager (npm)
 
-Install
--------
+Install & Run
+-------------
 1. `npm install`
+2. `node src/app.js`
 
 Code Quality
 ------------
