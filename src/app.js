@@ -16,6 +16,8 @@ const convertHeightToInt = (req, res, next) => {
   next();
 };
 
+app.use(express.json());
+
 app.get('/block/:height(\\d+)', convertHeightToInt, (req, res, next) => {
   const requestedHeight = req.params.height;
 
@@ -42,7 +44,7 @@ app.get('/block/:height(\\d+)', convertHeightToInt, (req, res, next) => {
 });
 
 app.post('/block', (req, res, next) => {
-  const { body } = req.query;
+  const { body } = req.body;
 
   if (body === undefined) {
     const noBlockDataMessage = 'No block data provided';
