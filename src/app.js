@@ -8,6 +8,9 @@ const EMPTY_HEIGHT = -1;
 const PORT = 8000;
 const UNKNOWN_ERROR_MSG = 'Something bad happened ಥ_ಥ, see server logs';
 
+const getBlockResponse = block => ({ error: false, block });
+const getErrorResponse = message => ({ error: true, message });
+
 const convertHeightToInt = (req, res, next) => {
   req.params.height = parseInt(req.params.height, 10);
   next();
@@ -19,17 +22,22 @@ app.get('/block/:height(\\d+)', convertHeightToInt, (req, res, next) => {
   blockchain.getBlockHeight()
     .then((lastBlockHeight) => {
       if (lastBlockHeight === EMPTY_HEIGHT) {
-        next('ERROR: Blockchain is empty');
+        const emptyBlockchainMessage = 'Blockchain is empty';
+        res.status(500).json(getErrorResponse(emptyBlockchainMessage));
+        next(`ERROR: ${emptyBlockchainMessage}`);
       } else if (requestedHeight < 0 || requestedHeight > lastBlockHeight) {
-        next(`ERROR: Invalid block (${requestedHeight}) requested`);
+        const invalidBlockMessage = (
+          `Invalid block (${requestedHeight}) requested`);
+        res.status(500).json(getErrorResponse(invalidBlockMessage));
+        next(`ERROR: ${invalidBlockMessage}`);
       } else {
         return blockchain.getBlock(requestedHeight)
-          .then(block => res.send(block));
+          .then(block => res.status(200).json(getBlockResponse(block)));
       }
     })
     .catch((error) => {
-      console.error(`ERROR: ${error}`);
-      next(`ERROR: ${UNKNOWN_ERROR_MSG}`);
+      res.json(getErrorResponse(UNKNOWN_ERROR_MSG));
+      next(`ERROR: ${error}`);
     });
 });
 
@@ -37,13 +45,15 @@ app.post('/block', (req, res, next) => {
   const { body } = req.query;
 
   if (body === undefined) {
-    next('ERROR: No block data provided');
+    const noBlockDataMessage = 'No block data provided';
+    res.status(500).json(getErrorResponse(noBlockDataMessage));
+    next(`ERROR: ${noBlockDataMessage}`);
   } else {
     blockchain.addBlock(body)
-      .then(block => res.send(block))
+      .then(block => res.status(201).json(getBlockResponse(block)))
       .catch((error) => {
-        console.error(`ERROR: ${error}`);
-        next(`ERROR: ${UNKNOWN_ERROR_MSG}`);
+        res.status(500).json(getErrorResponse(UNKNOWN_ERROR_MSG));
+        next(`ERROR: ${error}`);
       });
   }
 });
