@@ -25,11 +25,14 @@ Endpoints
   * _Content_
   ```javascript
   {
-      "body": "GENESIS",
-      "height": 0,
-      "previousBlockHash": "",
-      "time": "1537625658",
-      "hash": "c1ad7b65eeed9c996a34a88ab3bde769019ac94098622d058c26c7dbfb9d8ac7"
+      "error": false,
+      "block": {
+          "body": "GENESIS",
+          "height": 0,
+          "previousBlockHash": "",
+          "time": "1537669354",
+          "hash": "3af44777457c8cd3c3428f62b9263d92d2c38984a9746d381788796b646a9aee"
+      }
   }
   ```
 * __Error Response__
@@ -46,11 +49,14 @@ Endpoints
   * _Content_:
   ```javascript
   {
-    "body": "My New Block",
-    "height": 11,
-    "previousBlockHash": "0f956fb33fdd5af58d962d468a70790a52bbb3aeddd8d6e1cc489dcab154b4bf",
-    "time": "1537649115",
-    "hash": "226cc441c6876e6ff4ebb363d13b96ee1a0cf2498a9c6737fad63024458b231e"
+      "error": false,
+      "block": {
+          "body": "My New Block",
+          "height": 2,
+          "previousBlockHash": "ff92b188e8bb64200a21936f850c2bcc6f38908d5b32b2790c931c98e0be1c0a",
+          "time": "1537669887",
+          "hash": "1432cd7d82c658056261bbe9b75b2722ab15d63732c6ab94a5504bf8d0e6f486"
+      }
   }
   ```
 * __Error Response__
