@@ -19,7 +19,7 @@ const convertHeightToInt = (req, res, next) => {
 app.get('/block/:height(\\d+)', convertHeightToInt, (req, res, next) => {
   const requestedHeight = req.params.height;
 
-  blockchain.getBlockHeight()
+  blockchain.getLastBlockHeight()
     .then((lastBlockHeight) => {
       if (lastBlockHeight === EMPTY_HEIGHT) {
         const emptyBlockchainMessage = 'Blockchain is empty';
