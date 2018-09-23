@@ -70,8 +70,16 @@ Code Quality
 ------------
 This codebase adheres to the [Airbnb JavaScript/React/JSX Style Guide](https://github.com/airbnb/javascript)
 
-Code Organization (src)
------------------------
+Code Organization
+-----------------
+```console
+├── README.md
+├── package.json
+└── src
+    └── app.js
+
+1 directory, 3 files
+```
 
 Grading (by Udacity)
 --------------------
