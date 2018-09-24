@@ -36,7 +36,7 @@ Endpoints
   }
   ```
 * __Error Response__
-  * _Codes_: `400, `404`, `500`
+  * _Codes_: `400`, `404`, `500`
   * _Example Content_: `{ "error": true, message: "Something bad happened ಥ_ಥ" }`
   
 #### Add Block - Adds a new block in the blockchain containing specified data.
@@ -60,7 +60,7 @@ Endpoints
   }
   ```
 * __Error Response__
-  * _Codes_: `400`, 500`
+  * _Codes_: `400`, `500`
   * _Example Content_: `{ "error:" true, message: "Something bad happened ಥ_ಥ" }`
 
 Requirements
