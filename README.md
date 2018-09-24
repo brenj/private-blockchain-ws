@@ -43,7 +43,7 @@ Endpoints
 * __URL__: `/block`
 * __Method__: `POST`
 * __Required Parameters__
-  * `body=[string]`
+  * `{ "body:" "My New Block" }`
 * __Success Response__
   * _Code_: `201`
   * _Content_:
@@ -61,7 +61,7 @@ Endpoints
   ```
 * __Error Response__
   * _Code_: `500`
-  * _Content_: `{ error: true, message: "Something bad happened ಥ_ಥ" }`
+  * _Content_: `{ "error:" true, message: "Something bad happened ಥ_ಥ" }`
 
 Requirements
 ------------
@@ -93,6 +93,6 @@ Grading (by Udacity)
 
 Criteria             |Highest Grade Possible  |Grade Recieved
 ---------------------|------------------------|--------------
-Setup                |Meets Specifications    |
-functionality        |Meets Specifications    |
-Code Readability     |Meets Specifications    |
+Setup                |Meets Specifications    |Meets Specifications
+functionality        |Meets Specifications    |Meets Specifications
+Code Readability     |Meets Specifications    |Meets Specifications
