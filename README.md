@@ -37,7 +37,7 @@ Endpoints
   ```
 * __Error Response__
   * _Code_: `500`
-  * _Content_: `{ error: true, message: "Something bad happened ಥ_ಥ" }`
+  * _Content_: `{ "error": true, message: "Something bad happened ಥ_ಥ" }`
   
 #### Add Block - Adds a new block in the blockchain containing specified data.
 * __URL__: `/block`
