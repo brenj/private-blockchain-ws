@@ -22,7 +22,7 @@ Endpoints
   * `height=[integer]`
 * __Success Response__
   * _Code_: `200`
-  * _Content_
+  * _Example Content_
   ```javascript
   {
       "error": false,
@@ -36,8 +36,8 @@ Endpoints
   }
   ```
 * __Error Response__
-  * _Code_: `500`
-  * _Content_: `{ "error": true, message: "Something bad happened ಥ_ಥ" }`
+  * _Codes_: `400, `404`, `500`
+  * _Example Content_: `{ "error": true, message: "Something bad happened ಥ_ಥ" }`
   
 #### Add Block - Adds a new block in the blockchain containing specified data.
 * __URL__: `/block`
@@ -46,7 +46,7 @@ Endpoints
   * `{ "body:" "My New Block" }`
 * __Success Response__
   * _Code_: `201`
-  * _Content_:
+  * _Example Content_:
   ```javascript
   {
       "error": false,
@@ -60,8 +60,8 @@ Endpoints
   }
   ```
 * __Error Response__
-  * _Code_: `500`
-  * _Content_: `{ "error:" true, message: "Something bad happened ಥ_ಥ" }`
+  * _Codes_: `400`, 500`
+  * _Example Content_: `{ "error:" true, message: "Something bad happened ಥ_ಥ" }`
 
 Requirements
 ------------
