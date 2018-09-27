@@ -2,7 +2,7 @@
   "name": "private-blockchain-ws",
   "version": "1.0.0",
   "description": "Web service used to expose a private blockchain.",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,7 +25,6 @@
   "homepage": "https://github.com/brenj/private-blockchain-ws#readme",
   "dependencies": {
     "express": "^4.16.3",
-    "npm": "^6.4.1",
     "private-blockchain": "git://github.com/brenj/private-blockchain.git"
   }
 }
